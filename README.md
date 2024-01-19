@@ -26,6 +26,7 @@ The encoder portion of U-Net efficiently captures hierarchical features of the i
 The decoder utilizes transposed convolutional layers for upsampling, allowing the network to reconstruct the image at a higher resolution while maintaining the learned features.
 
 ![Image](/images/architecture.png)
+**Refrenece - [pyimagesearch](https://pyimagesearch.com/2021/11/08/u-net-training-image-segmentation-models-in-pytorch/)**
 
  The main packages and components used in the project include:
 

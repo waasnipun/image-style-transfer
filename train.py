@@ -85,12 +85,12 @@ def main ():
     root_dir = os.path.join(os.getcwd(), 'VD_dataset2')
     dataset = getDataset(path=root_dir, shuffle_images=False)
 
-    # Split dataset into train and test
     transform = transforms.Compose([
                 transforms.Resize((256, 256)),
                 transforms.ToTensor(),
             ])
 
+    # Split dataset into train and test
     train_set, temp_set = train_test_split(dataset, test_size=0.3, random_state=42)
     val_set, test_set = train_test_split(temp_set, test_size=0.5, random_state=42)
 
