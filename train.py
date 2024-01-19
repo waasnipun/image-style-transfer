@@ -2,18 +2,16 @@ from tools import getDataset
 
 import numpy as np
 import matplotlib.pyplot as plt
-import torch
 import os
+
+import torch
 from sklearn.model_selection import train_test_split
 from torchvision import models, transforms
-from torch.utils.data import DataLoader
-
-
-from torch.utils.data import Dataset
-from PIL import Image
-
+from torch.utils.data import DataLoader, Dataset
 from torch.nn import BCEWithLogitsLoss
 import torch.optim as optim
+
+from PIL import Image
 
 from model import StyleTransferUNet
 from dataset import StyleTransferDataset
@@ -64,7 +62,7 @@ def train_style_transfer_model(model, train_dataloader, val_dataloader, criterio
             print(f'Validation - Epoch [{epoch + 1}/{num_epochs}], Loss: {average_validation_loss}')
 
     # Save the trained model
-    torch.save(style_transfer_model.state_dict(), 'trained_model/style_transfer_model.pth')
+    torch.save(model.state_dict(), 'trained_model/style_transfer_model.pth')
 
 def test_style_transfer_model(model, test_dataloader, criterion, device='cuda'):
     model.eval()
@@ -80,7 +78,6 @@ def test_style_transfer_model(model, test_dataloader, criterion, device='cuda'):
 
         average_test_loss = test_loss / len(test_dataloader)
         print(f'Test - Loss: {average_test_loss}')
-
 
 
 def main ():
