@@ -18,6 +18,10 @@ from dataset import StyleTransferDataset
 
 # Check if GPU is available
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
+else:
+    print("MPS device not found.")
 print('Device:', device)
 
 # Training loop
@@ -101,13 +105,11 @@ def main ():
     validation_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-
     # Create model, loss function and optimizer
     style_transfer_model = StyleTransferUNet().to(device)
 
     criterion = BCEWithLogitsLoss().to(device)
     optimizer = optim.Adam(style_transfer_model.parameters(), lr=1e-3)
-
 
     train_style_transfer_model(style_transfer_model, train_loader, validation_loader, criterion, optimizer, num_epochs=20, device=device)
     test_style_transfer_model(style_transfer_model, test_loader, criterion, device=device)
