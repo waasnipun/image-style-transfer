@@ -10,7 +10,7 @@
 
 ## Introduction
 
-Neurafusion is a cross-domain few-shot learning project perform using various pre-trained models such as Vision Transformers (ViT), EfficientNet, and ResNet18. The main model that primary emphasis is on Vision Transformer(ViT). The project includes tools for pre-training and fine-tuning models on different datasets, specifically MiniImageNet and EuroSAT_RGB. Please follow the below instructions to get started
+I implemented an image translation solution using PyTorch and U-Net architecture for a dataset of 1207 paired images. U-Net's encoder-decoder model, with skip connections, preserves fine details, making it powerful for tasks like image translation. U-Net is versatile, efficient in training, and can handle arbitrary image sizes, making it a suitable choice for this project.
 
 ## Getting Started
 
